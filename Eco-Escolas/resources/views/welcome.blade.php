@@ -5,6 +5,6 @@
 <div class="intro">
 <img src="/img/loja.jpg" alt="">
 
-<a href="/noticias">Ver Noticias</a>
+<a href="{{route('noticia.index')}}">Ver Noticias</a>
 </div>
 @endsection
