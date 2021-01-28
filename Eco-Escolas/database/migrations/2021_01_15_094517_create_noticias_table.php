@@ -19,8 +19,6 @@ class CreateNoticiasTable extends Migration
             $table->string('nome');
             $table->string('desc');
             
-
-
         });
     }
 

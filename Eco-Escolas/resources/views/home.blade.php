@@ -15,7 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-
+                    <br>
                     <a href="{{ route('noticia.create') }}">Criar Noticia</a>
                 </div>
             </div>

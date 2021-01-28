@@ -11,7 +11,7 @@
         @if(!isset($actTipo))
     </b>
     @endif
-    @foreach($noticias as $tipo)
+    @foreach($tipos as $tipo)
         @if(isset($actTipo) && $actTipo == $tipo->id)
     <b>
         @endif

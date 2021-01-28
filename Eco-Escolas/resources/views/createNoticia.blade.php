@@ -18,9 +18,9 @@
         </ul>
     </div>
 
-    <form action="{{ route('noticia.store) }}" method="POST" enctype="multipart/form-data"
-        @if(isset($produto))
-            action="{{ route('noticia.update', $noticia->id)}}"
+    <form method="POST" enctype="multipart/form-data"
+        @if(isset($noticia))
+            action="{{ route('noticia.update', $noticia->id) }}"
         @else
             action="{{ route('noticia.store') }}"
         @endif>
@@ -31,15 +31,16 @@
         <label for="titulo">Titulo da Notícia: </label>
         <input type="text" id="name" name="name"
         @if(isset($noticia))
-            value="{{$noticia->nome}}"
+            value="{{ $noticia->nome }}"
         @endif
         >
         <br>
-        <label for="desc">Descrição da Noticia:</label
+        <label for="desc">Descrição da Noticia:</label>
+        
+        <input type="text" id="desc" name="desc"
         @if(isset($noticia))
-            value="{{$noticia->desc}}"
+            value="{{ $noticia->desc }}"
         @endif>
-        <input type="text" id="desc" name="desc">
         <br>
         <label for="tipoNoticia">Tipo de Noticia:</label>
         <select name="tipoNoticia" id="tipoNoticia">
@@ -47,8 +48,7 @@
             <option value="{{ $tipo->id }}"
             @if (isset($noticia) && $noticia->tipo_noticia_id == $tipo->id)
             selected="selected"
-            @endif
-            >{{ $tipo->nome }}</option>
+            @endif> {{ $tipo->nome }} </option>
             @endforeach
         </select>
         <br>

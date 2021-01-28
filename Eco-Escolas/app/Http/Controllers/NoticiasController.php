@@ -14,8 +14,9 @@ class NoticiasController extends Controller
 
     public function index()
     {
-        $noticias = Noticia::all();
-        return view('noticias', ['noticias' => $noticias]);
+        $tipos = tipo_noticia::all();
+        $noticias = Noticia::all();          
+        return view('noticias', ['noticias' => $noticias ,'tipos'=> $tipos]);
     }
 
     public function show($id)
@@ -42,23 +43,23 @@ class NoticiasController extends Controller
     {
         $name = request('name');
         $desc = request('desc');
-        $tipo = request('tipoProduto');
+        $tipo = request('tipoNoticia');
 
         $noticia = Noticia::findOrFail($id);
 
-        $noticia->nome = $name;
+        $noticia->name = $name;
         $noticia->desc = $desc;
         $noticia->tipo_noticia_id = $tipo;
 
         $noticia->save();
 
-        return redirect('/noticia/$id')->width('mssg', 'Noticia Criada');
+        return redirect("/noticia/$id")->with('mssg', 'Noticia Criada');
     }
 
     public function store(NewNoticiaRequest $request)
     {
         $validateData=$request->validate([
-            'name'=> 'required'           
+            'name'=> 'required'       
         ]);
 
         $tipo = request('tipoNoticia');
@@ -76,6 +77,7 @@ class NoticiasController extends Controller
 
         return redirect('/noticias/create')->with('mssg', 'Noticia Criada');
     }
+    
 
     public function destroy($id){
         $noticia = Noticia::findOrFail($id);
@@ -86,9 +88,9 @@ class NoticiasController extends Controller
     public function noticiasPorTipo($id){
         $tipos = tipo_noticia::all();
         $tipo = tipo_noticia::findOrFail($id);
-        $produtos = $tipo->noticias;
+        $noticias = $tipo->noticias;
 
-        return view('noticias',['noticias' => $produtos, 'tipos' => $tipos, 'actTipo' => $id]);
+        return view('noticias', ['noticias' => $noticias, 'tipos' => $tipos, 'actTipo' => $id]);
     }
 
 }

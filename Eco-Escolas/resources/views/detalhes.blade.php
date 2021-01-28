@@ -17,7 +17,7 @@
     <form action="{{ route('noticia.destroy', $noticia->id) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button>Eliminar Produto</button>
+        <button>Eliminar Noticia</button>
     </form>
     <form action="{{ route('noticia.edit', $noticia->id) }}" method="GET">
         @csrf

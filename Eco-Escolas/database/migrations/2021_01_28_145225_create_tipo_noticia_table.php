@@ -16,7 +16,6 @@ class CreateTipoNoticiaTable extends Migration
         Schema::create('tipo_noticia', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-
             $table->string('nome');
         });
     }
