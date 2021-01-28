@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditNoticiaRequest;
 use App\Noticia;
 use Illuminate\Http\Request;
+use App\Models\tipo_noticia;
+use App\Http\Requests\NewNoticiaRequest;
+
 
 class NoticiasController extends Controller
 {
@@ -22,16 +26,42 @@ class NoticiasController extends Controller
 
     public function create()
     {
-        return view('createNoticia');
+        $tipos = tipo_noticia::all();
+
+        return view('createNoticia', ['tipos' => $tipos]);
     }
 
-    public function store(Request $request)
+    public function edit($id){
+        $tipos = tipo_noticia::all();
+        $noticia = Noticia::findOrFail($id);
+
+        return view('createNoticia', ['noticia' => $noticia, 'tipos' => $tipos]);
+    }
+
+    public function update($id, EditNoticiaRequest $request)
+    {
+        $name = request('name');
+        $desc = request('desc');
+        $tipo = request('tipoProduto');
+
+        $noticia = Noticia::findOrFail($id);
+
+        $noticia->nome = $name;
+        $noticia->desc = $desc;
+        $noticia->tipo_noticia_id = $tipo;
+
+        $noticia->save();
+
+        return redirect('/noticia/$id')->width('mssg', 'Noticia Criada');
+    }
+
+    public function store(NewNoticiaRequest $request)
     {
         $validateData=$request->validate([
-            'name'=> 'required'
+            'name'=> 'required'           
         ]);
 
-        
+        $tipo = request('tipoNoticia');
         $name =  request('name');
         $desc = request('desc');
 
@@ -39,6 +69,8 @@ class NoticiasController extends Controller
 
         $noticia->nome = $name;
         $noticia->desc = $desc;
+        $noticia->tipo_noticia_id = $tipo;
+        $noticia->created_by = auth()->user()->id;
 
         $noticia->save();
 
@@ -49,6 +81,14 @@ class NoticiasController extends Controller
         $noticia = Noticia::findOrFail($id);
         $noticia->delete();
         return redirect('/noticias');
+    }
+
+    public function noticiasPorTipo($id){
+        $tipos = tipo_noticia::all();
+        $tipo = tipo_noticia::findOrFail($id);
+        $produtos = $tipo->noticias;
+
+        return view('noticias',['noticias' => $produtos, 'tipos' => $tipos, 'actTipo' => $id]);
     }
 
 }
