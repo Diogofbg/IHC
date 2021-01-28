@@ -47,13 +47,13 @@ class NoticiasController extends Controller
 
         $noticia = Noticia::findOrFail($id);
 
-        $noticia->name = $name;
+        $noticia->nome = $name;
         $noticia->desc = $desc;
         $noticia->tipo_noticia_id = $tipo;
 
         $noticia->save();
 
-        return redirect("/noticia/$id")->with('mssg', 'Noticia Criada');
+        return redirect("/noticias/$id")->with('mssg', 'Noticia Atualizada');
     }
 
     public function store(NewNoticiaRequest $request)

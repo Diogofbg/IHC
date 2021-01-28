@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Eco-Escolas - Criar Notícia
+<h1>Eco-Escolas - 
     @if (isset($noticia))
     Editar Noticia
     @else
@@ -10,14 +10,6 @@
 </h1>
 <div class="detalhes">
     <p class="message">{{session('mssg') }}</p>
-    <div class="error">
-        <ul>
-            @foreach($errors->all()as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-
     <form method="POST" enctype="multipart/form-data"
         @if(isset($noticia))
             action="{{ route('noticia.update', $noticia->id) }}"
@@ -53,7 +45,7 @@
         </select>
         <br>
 
-        <input type="submit" value="Criar Noticia"
+        <input type="submit"
         @if(isset($noticia))
             value="Editar Noticia"
         @else
