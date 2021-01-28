@@ -7,7 +7,7 @@
     @if(!isset($actTipo))
     <b>
         @endif
-        <a href=" {{ route ('noticia.index') }} ">Todas as Noticias</a>
+       <a href=" {{ route ('noticia.index') }} "> <button class="todnot">Todas as Noticias</button></a>
         @if(!isset($actTipo))
     </b>
     @endif
@@ -15,7 +15,7 @@
         @if(isset($actTipo) && $actTipo == $tipo->id)
     <b>
         @endif
-        - <a href="{{ route('noticia.by.tipo', $tipo->id) }}">{{ $tipo->nome }}</a>
+        - <a href="{{ route('noticia.by.tipo', $tipo->id) }}"><button class="todnot">{{ $tipo->nome }}</button></a>
         @if(isset($actTipo) && $actTipo == $tipo->id)
     </b>
     @endif

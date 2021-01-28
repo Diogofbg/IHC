@@ -1,0 +1,134 @@
+header
+{
+    z-index: 9999;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    background-color:brown;
+}
+
+body
+{
+    text-align: center;
+    background-color: #d7fcd4;
+}
+
+footer
+{
+    z-index: 9999;
+    text-align: center;
+    line-height: 10vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    background-color: brown;
+}
+
+#contentArea
+{
+    text-align: center;
+    position: fixed;
+    top: 10vh;
+    bottom: 10vh;
+    left:0;
+    right: 0;
+    overflow-y: auto;
+}
+
+h1
+{
+
+    text-align: center;
+    font-size: 5vh;
+    line-height: 10vh;
+}
+.intro
+{
+    text-align: center;
+}
+
+
+.message
+{
+    background-color: green;
+    color: white;
+}
+
+.error
+{
+    background-color: red;
+    color: white;
+}
+
+.storeName
+{
+    font-size: 6vh;
+    line-height: 10vh;
+    color: whitesmoke;
+    float: left;
+}
+
+.userData
+{
+    font-size: 3vh;
+    line-height: 10vh;
+    color: whitesmoke;
+    float: right;
+}
+
+.userData > a
+{
+    margin: 0 1vw;
+}
+.botao{
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 100px;
+    background-color: lightgrey;
+}
+.botao:hover{
+    color: white;
+    border: 1px solid grey;
+    border-radius: 20px;
+    width: 100px;
+    background-color: grey;
+}
+.imgprin{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.vernot{
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: lightgrey;
+    width: 170px;
+}
+.vernot:hover{
+    border: 1px solid grey;
+    border-radius: 30px;
+    background-color: lightgrey;
+    width: 150px;
+}
+.todnot{
+    width: 220px;
+    height: 60px;
+    background-color: lightgreen;
+    border-radius: 20px;
+    font-size: 22px;
+}
+
+.todnot:hover{
+    border-radius: 30px;
+    background-color: green;
+    font-size: 24px;
+    -webkit-box-shadow: -1px 38px 56px -25px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 38px 56px -25px rgba(0,0,0,0.75);
+    box-shadow: -1px 38px 56px -25px rgba(0,0,0,0.75);
+}
+   
