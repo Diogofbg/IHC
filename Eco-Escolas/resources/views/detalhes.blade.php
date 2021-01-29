@@ -4,9 +4,10 @@
 <h1>Eco-Escolas - Detalhes</h1>
 <div class="detalhes">
     @if (isset($noticia))
-    <img src="{{ $noticia['img'] }}" alt="">
-    <h2>{{ $noticia->nome}}</h2>
-    <p>{{$noticia->desc}}</p>
+    <img class="imgnotdet" src="{{ $noticia['url'] }}" alt="">
+    <br><br>
+    <h1 style="text-align:center">{{ $noticia->nome}}</h1>
+    <p style="text-align:center">{{$noticia->desc}}</p>
     @else
     <h1>A noticia não existe</h1>
     @endif

@@ -10,6 +10,17 @@
 </h1>
 <div class="detalhes">
     <p class="message">{{session('mssg') }}</p>
+    
+    @if ($errors->any()) 
+    <div class="error">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <form method="POST" enctype="multipart/form-data"
         @if(isset($noticia))
             action="{{ route('noticia.update', $noticia->id) }}"
@@ -28,12 +39,21 @@
         >
         <br>
         <label for="desc">Descrição da Noticia:</label>
-        
         <input type="text" id="desc" name="desc"
         @if(isset($noticia))
             value="{{ $noticia->desc }}"
         @endif>
         <br>
+
+        <input type="hidden" id="changed" name="changed" value="false">
+        <label for="url">Imagem:</label>
+        <input type="file" id='url' name='url'
+            onchange="document.getElementById('changed').value='true';">
+            @if(isset($noticia))
+            (não alterar para manter foto)
+            @endif
+        <br>
+
         <label for="tipoNoticia">Tipo de Noticia:</label>
         <select name="tipoNoticia" id="tipoNoticia">
             @foreach ($tipos as $tipo)
@@ -43,7 +63,8 @@
             @endif> {{ $tipo->nome }} </option>
             @endforeach
         </select>
-    </form>
+
+    <br>
     <br>
     <input type="submit" class="crinot"
         @if(isset($noticia))
@@ -51,6 +72,7 @@
         @else
         value="Criar Noticia"
         @endif>
+    </form>
         <br>
         <br>
         <a href="/noticias"><button class="botvol">Voltar as Notícias</button></a>

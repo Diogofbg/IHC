@@ -18,7 +18,7 @@ class CreateNoticiasTable extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->string('desc');
-            
+            $table->string('url');           
         });
     }
 

@@ -54,14 +54,14 @@ h1
 
 .message
 {
-    background-color: green;
-    color: white;
+    text-decoration: underline;
+    color: green;
 }
 
 .error
 {
-    background-color: red;
-    color: white;
+    color: red;
+    text-decoration: underline;
 }
 
 .storeName
@@ -116,26 +116,21 @@ h1
     width: 150px;
 }
 .todnot{
-    width: 220px;
+    width: 150px;
     height: 60px;
     background-color: lightgreen;
-    border-radius: 20px;
-    font-size: 22px;
+    border-radius: 5px;
+    font-size: 15px;
 }
 
 .todnot:hover{
-    border-radius: 30px;
+    border-radius: 15px;
     background-color: green;
     
 }
 .titnot{
     color: black;
     margin-top: 20px;
-}
-.titnot:hover{
-    text-decoration: underline;
-    border-radius: 10px;
-    font-size: 35px;
 }
 .detalhes{
     display: inline-block;
@@ -163,7 +158,23 @@ h1
     width: 300px;
     background-color: lightgrey;
     font-size: 15px;
+    margin-left: 70px;
 }
 .crinot:hover{
     border-radius: 30px;
+}
+.imgnot{
+    width: 200px;
+    border-radius: 20px;
+}
+.imgnot:hover{
+    border-radius: 10px;
+    border: 2px solid black;
+}
+.imgnotdet{
+    width: 450px;
+    height: 450px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-top:20px;
 }

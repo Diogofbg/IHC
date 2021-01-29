@@ -17,7 +17,11 @@
                     {{ __('Login Efetuado com sucesso !') }}
                     <br>
                     <br>
+                    @if(auth()->user()->IsAdmin)
+                    <a class="criar" href="{{ route('noticia.index') }}"><button class="crinot">Gerir Noticias</button></a>
+                    @else
                     <a class="criar" href="{{ route('noticia.create') }}"><button class="crinot">Criar Noticia</button></a>
+                    @endif
                 </div>
             </div>
         </div>

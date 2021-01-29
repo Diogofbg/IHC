@@ -27,14 +27,13 @@
 <br>
 
 <div class="container">
-    <div class="row" style=" margin: 0 0 20px 230px;">
+    <div class="row">
         @foreach ($noticias as $noticia)
-        <div class="col-md-4" style="border-bottom: 1px solid black; margin: 0 0 20px 20px; height: 100px; width: 200px;">
-            <div class="noticia">
+        <div class="col-md-4" style="padding: 0 0 70px 0;">
                 <a href="{{ route ('noticia.show',$noticia->id) }}">
+                <img class="imgnot" src="{{ $noticia->url }}" alt="">
                     <h2 class="titnot">{{ $noticia->nome }}</h2>
                 </a>
-            </div>
         </div>
         @endforeach
     </div>

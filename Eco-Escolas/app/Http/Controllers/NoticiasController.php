@@ -15,8 +15,8 @@ class NoticiasController extends Controller
     public function index()
     {
         $tipos = tipo_noticia::all();
-        $noticias = Noticia::all();          
-        return view('noticias', ['noticias' => $noticias ,'tipos'=> $tipos]);
+        $noticias = Noticia::all();
+        return view('noticias', ['noticias' => $noticias, 'tipos' => $tipos]);
     }
 
     public function show($id)
@@ -32,7 +32,8 @@ class NoticiasController extends Controller
         return view('createNoticia', ['tipos' => $tipos]);
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $tipos = tipo_noticia::all();
         $noticia = Noticia::findOrFail($id);
 
@@ -45,8 +46,27 @@ class NoticiasController extends Controller
         $desc = request('desc');
         $tipo = request('tipoNoticia');
 
+        $changed = request('changed');
+
         $noticia = Noticia::findOrFail($id);
 
+        if ($changed == 'true') {
+            $url = "";
+            if ($request->has('url')) {
+                $image = $request->file('url');
+
+                $iname = 'prod' . '_' . time();
+                $folder = '/img/noticias/';
+                $fileName = $iname . '.' . $image->getClientOriginalExtension();
+                $filePath = $folder . $fileName;
+
+                $image->storeAs($folder, $fileName, 'public');
+                $url = "/storage/".$filePath;
+            }
+
+            $noticia->url = $url;
+        }
+        
         $noticia->nome = $name;
         $noticia->desc = $desc;
         $noticia->tipo_noticia_id = $tipo;
@@ -58,39 +78,50 @@ class NoticiasController extends Controller
 
     public function store(NewNoticiaRequest $request)
     {
-        $validateData=$request->validate([
-            'name'=> 'required'       
-        ]);
-
         $tipo = request('tipoNoticia');
         $name =  request('name');
         $desc = request('desc');
+        $url = request('url');
 
-        $noticia =  new Noticia();
+        $url = "";
+        if ($request->has('url')) {
+            $image = $request->file('url');
+
+            $iname = 'not' . '_' . time();
+            $folder = '/img/noticias/';
+            $fileName = $iname . '.' . $image->getClientOriginalExtension();
+            $filePath = $folder . $fileName;
+
+            $image->storeAs($folder, $fileName, 'public');
+            $url = "/storage/" . $filePath;
+        }
+
+        $noticia = new Noticia();
 
         $noticia->nome = $name;
         $noticia->desc = $desc;
         $noticia->tipo_noticia_id = $tipo;
         $noticia->created_by = auth()->user()->id;
+        $noticia->url = $url;
 
         $noticia->save();
 
         return redirect('/noticias/create')->with('mssg', 'Noticia Criada');
+        
     }
-    
-
-    public function destroy($id){
+    public function destroy($id)
+    {
         $noticia = Noticia::findOrFail($id);
         $noticia->delete();
         return redirect('/noticias');
     }
 
-    public function noticiasPorTipo($id){
+    public function noticiasPorTipo($id)
+    {
         $tipos = tipo_noticia::all();
         $tipo = tipo_noticia::findOrFail($id);
         $noticias = $tipo->noticias;
 
         return view('noticias', ['noticias' => $noticias, 'tipos' => $tipos, 'actTipo' => $id]);
     }
-
 }

@@ -24,15 +24,19 @@ class EditNoticiaRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => 'required',
-           'desc' => 'required'
+            'name' => 'required',
+            'desc' => 'required',
+            'url' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 
     public function messages(){
-        return[
+        return  [
             'name.required' => 'Nome é obrigatorio',
-            'desc.required' => 'Descrição é obrigatoria'
+            'desc.required' => 'Descrição é obrigatoria',
+            'url.image' => 'A imagem deve ser uma imagem.',
+            'url.mimes' => 'A imagem deve ser jpeg,png,jpg,gif.',
+            'url.max' => 'A imagem nao pode exceder 2MB.'
         ];
     }
 }

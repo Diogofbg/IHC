@@ -62,15 +62,20 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    
+                                    @if(auth()->user()->IsAdmin)
+                                    <a href="{{ route('noticia.index') }}" class="dropdown-item">
+                                        Gerir Noticias
+                                    </a>
+                                    @else
                                     <a href="{{ route('noticia.create') }}" class="dropdown-item">
                                         Criar Noticia
                                     </a>
+                                    @endif
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Sair') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
