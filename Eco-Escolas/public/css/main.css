@@ -130,11 +130,12 @@ h1
 }
 .titnot{
     color: black;
+    margin-top: 20px;
 }
 .titnot:hover{
     text-decoration: underline;
     border-radius: 10px;
-    font-size: 27px;
+    font-size: 35px;
 }
 .detalhes{
     display: inline-block;

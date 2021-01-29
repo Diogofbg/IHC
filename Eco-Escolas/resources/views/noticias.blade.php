@@ -27,9 +27,9 @@
 <br>
 
 <div class="container">
-    <div class="row">
+    <div class="row" style=" margin: 0 0 20px 230px;">
         @foreach ($noticias as $noticia)
-        <div style="border-right: 2px solid green; margin-bottom: 100px;" class="col-md-4" >
+        <div class="col-md-4" style="border-bottom: 1px solid black; margin: 0 0 20px 20px; height: 100px; width: 200px;">
             <div class="noticia">
                 <a href="{{ route ('noticia.show',$noticia->id) }}">
                     <h2 class="titnot">{{ $noticia->nome }}</h2>
