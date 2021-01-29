@@ -17,7 +17,7 @@
                     {{ __('Login Efetuado com sucesso !') }}
                     <br>
                     <br>
-                    <a class="criar" href="{{ route('noticia.create') }}">Criar Noticia</a>
+                    <a class="criar" href="{{ route('noticia.create') }}"><button class="crinot">Criar Noticia</button></a>
                 </div>
             </div>
         </div>

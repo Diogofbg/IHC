@@ -7,12 +7,12 @@
     @if(!isset($actTipo))
     <b>
         @endif
-       <a href=" {{ route ('noticia.index') }} "> <button class="todnot">Todas as Noticias</button></a>
+        <a href=" {{ route ('noticia.index') }} "> <button class="todnot">Todas as Noticias</button></a>
         @if(!isset($actTipo))
     </b>
     @endif
     @foreach($tipos as $tipo)
-        @if(isset($actTipo) && $actTipo == $tipo->id)
+    @if(isset($actTipo) && $actTipo == $tipo->id)
     <b>
         @endif
         - <a href="{{ route('noticia.by.tipo', $tipo->id) }}"><button class="todnot">{{ $tipo->nome }}</button></a>
@@ -22,12 +22,21 @@
     @endforeach
 </div>
 
-@foreach ($noticias as $noticia)
-<div class="noticia">
-    <a href="{{ route ('noticia.show',$noticia->id) }}">
-        <img src="{{ $noticia['img'] }}" alt="">
-        <h2>{{ $noticia->nome }}</h2>
-    </a>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        @foreach ($noticias as $noticia)
+        <div style="border-right: 2px solid green; margin-bottom: 100px;" class="col-md-4" >
+            <div class="noticia">
+                <a href="{{ route ('noticia.show',$noticia->id) }}">
+                    <h2 class="titnot">{{ $noticia->nome }}</h2>
+                </a>
+            </div>
+        </div>
+        @endforeach
+    </div>
 </div>
-@endforeach
 @endsection

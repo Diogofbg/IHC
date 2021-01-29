@@ -43,16 +43,16 @@
             @endif> {{ $tipo->nome }} </option>
             @endforeach
         </select>
-        <br>
-
-        <input type="submit"
+    </form>
+    <br>
+    <input type="submit" class="crinot"
         @if(isset($noticia))
             value="Editar Noticia"
         @else
         value="Criar Noticia"
         @endif>
-
-    </form>
-    <a href="/noticias">Voltar as Notícias</a>
+        <br>
+        <br>
+        <a href="/noticias"><button class="botvol">Voltar as Notícias</button></a>
 </div>
 @endsection

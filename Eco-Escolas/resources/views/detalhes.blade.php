@@ -17,14 +17,17 @@
     <form action="{{ route('noticia.destroy', $noticia->id) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button>Eliminar Noticia</button>
+        <button class="crinot">Eliminar Noticia</button>
     </form>
+    <br>
+
     <form action="{{ route('noticia.edit', $noticia->id) }}" method="GET">
         @csrf
-        <button>Editar Noticia</button>
+        <button class="crinot">Editar Noticia</button>
     </form>
     @endif
     @endauth
-    <a href="/noticias"> Voltar às noticias</a>
+    <br>
+    <a href="/noticias"><button class="crinot">Voltar às noticias</button></a>
 </div>
 @endsection
